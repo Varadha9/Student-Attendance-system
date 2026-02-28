@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Attendance System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    Student Attendance System
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="showSection('home')">Home</a></li>
+      <li><a href="#" onclick="showSection('about')">About</a></li>
+      <li><a href="#" id="markAttendanceLink" onclick="showSection('mark')">Mark Attendance</a></li>
+      <li><a href="#" id="viewAttendanceLink" onclick="showSection('view')">View Attendance</a></li>
+      <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+      <li><a href="#" id="loginLink" onclick="showSection('login')">Login</a></li>
+      <li><a href="#" id="registerLink" onclick="showSection('register')">Register</a></li>
+      <li><a href="#" id="logoutLink" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="active">
+    <h2>Welcome to the Student Attendance System</h2>
+    <p>This system allows you to mark and track attendance for students.</p>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>This is a simple frontend-only project simulating a digital student attendance tracking system. It supports marking and viewing attendance using JavaScript.</p>
+  </section>
+
+  <section id="mark">
+    <h2>Mark Attendance</h2>
+    <input type="text" id="studentName" placeholder="Enter student name" />
+    <input type="text" id="subjectName" placeholder="Enter subject name" />
+    <button onclick="markAttendance()">Mark Present</button>
+    <p id="markStatus"></p>
+  </section>
+
+  <section id="view">
+    <h2>View Attendance</h2>
+    <button onclick="clearAttendance()">Clear Attendance</button>
+    <ul id="attendanceList"></ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Name" required /><br />
+      <input type="email" id="email" placeholder="Email" required /><br />
+      <textarea id="message" placeholder="Message" required></textarea><br />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Faculty Registration Section -->
+  <section id="register">
+    <h2>Register as Faculty</h2>
+    <form id="registerForm">
+      <input type="text" id="regUsername" placeholder="Username" required /><br />
+      <input type="password" id="regPassword" placeholder="Password" required /><br />
+      <input type="text" id="regFacultyName" placeholder="Faculty Name" required /><br />
+      <button type="submit">Register</button>
+    </form>
+    <p id="registerStatus"></p>
+  </section>
+
+  <!-- Faculty Login Section -->
+  <section id="login">
+    <h2>Login as Faculty</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Username" required /><br />
+      <input type="password" id="loginPassword" placeholder="Password" required /><br />
+      <button type="submit">Login</button>
+    </form>
+    <p id="loginStatus"></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Student Attendance System. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
