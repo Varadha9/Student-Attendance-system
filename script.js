@@ -11,6 +11,8 @@ function showSection(sectionId) {
     loadAttendance();
   }
 
+  
+  
   // Hide "Mark Attendance" and "View Attendance" if not logged in
   const loggedInUser = sessionStorage.getItem('loggedInUser');
   const markAttendanceLink = document.getElementById('markAttendanceLink');
