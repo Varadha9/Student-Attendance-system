@@ -1,12 +1,18 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = "varad@111";     
-$dbname = "student_attendance"; 
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$host = "sql200.infinityfree.com";
+$user = "if0_41272147";
+$password = "ADT23SOCB1574";
+$database = "if0_41272147_student_attendance";
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = mysqli_connect($host, $user, $password, $database);
+
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
 }
+
+// Set charset
+mysqli_set_charset($conn, "utf8");
 ?>
