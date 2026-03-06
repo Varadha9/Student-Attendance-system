@@ -1,18 +1,47 @@
 <?php
-include 'db.php';
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $faculty_name = $_POST['faculty_name'];
+session_start();
+include "db.php";
 
-    $stmt = $conn->prepare("INSERT INTO users (username, password, faculty_name) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $password, $faculty_name);
+$message="";
 
-    if ($stmt->execute()) {
-        echo "Registration successful!";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+$username=$_POST['username'];
+$password=$_POST['password'];
+
+$hashed_password=password_hash($password,PASSWORD_DEFAULT);
+
+$stmt=$conn->prepare("INSERT INTO users(username,password,role) VALUES(?,?, 'user')");
+$stmt->bind_param("ss",$username,$hashed_password);
+
+if($stmt->execute()){
+$message="Registration successful! Please login.";
+}else{
+$message="Username already exists!";
+}
+
 }
 ?>
+
+<h2>Register</h2>
+
+<?php
+if($message!=""){
+echo $message;
+}
+?>
+
+<form method="POST">
+
+<input type="text" name="username" placeholder="Username" required><br><br>
+
+<input type="password" name="password" placeholder="Password" required><br><br>
+
+<button type="submit">Register</button>
+
+</form>
+
+<a href="login.php">Login</a>
